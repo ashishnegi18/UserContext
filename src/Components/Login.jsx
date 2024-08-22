@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import UserContext from "../Context/UserContext";
 
 useState
 const Login = () => {
   const[userName, setUserName]=useState('')
   const[lastName, setLastName]=useState('')
+  
+  const {setUser} = useContext(UserContext)
+
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+    setUser({userName,lastName})  
+  }
   return (
     <>
       <h2>Login</h2>
@@ -21,7 +29,7 @@ const Login = () => {
         onChange={(e) => setLastName(e.target.value)}
         placeholder="lastName"
       />
-      <button>submit</button>
+      <button onClick={handleSubmit}>submit</button>
     </>
   );
 };
