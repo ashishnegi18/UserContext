@@ -2,19 +2,21 @@ import { useContext } from "react";
 import UserContext from "../Context/UserContext";
 
 const Profile = () => {
-  const { user } = useContext(UserContext);
+  const { user, imgUrl } = useContext(UserContext);
+
   if (!user)
     return (
       <div>
         <h1>Please Login</h1>
       </div>
     );
+
   return (
     <div
       style={{
         height: "250px",
         width: "350px",
-        backgroundColor: "#f5f5f",
+        backgroundColor: "#f5f5f5",
         color: "black",
         marginLeft: "170px",
       }}
@@ -35,6 +37,8 @@ const Profile = () => {
       >
         {user.lastName}
       </h2>
+      {console.log(user.password)}
+      {<img src={imgUrl} alt="User Image" />}
     </div>
   );
 };
